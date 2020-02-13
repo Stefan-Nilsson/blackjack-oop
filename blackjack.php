@@ -22,7 +22,6 @@ class blackJackPlayer
 {
     // property declaration
 
-
     public $score;
     // declare totalValue variable and set startValue at 0
     public $totalValue = 0;
@@ -37,9 +36,7 @@ class blackJackPlayer
         'maxValue' => 11,
     ];
 
-
     // method declaration:
-
 
     // function to insert the card into an array
     public function hit($arrayName, $cardValue)
@@ -94,7 +91,7 @@ if (isset($_POST['refresh'])) {
 // Finally, destroy the session.
     session_destroy();
 // start new session
-    session_start();
+  //  session_start();
 // refresh page
     header('refresh');
 }
