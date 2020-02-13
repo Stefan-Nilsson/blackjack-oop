@@ -40,9 +40,7 @@ class blackJackPlayer
 
     // method declaration:
 
-    public function startSession(){
-        session_start();
-    }
+
     // function to insert the card into an array
     public function hit($arrayName, $cardValue)
     {
