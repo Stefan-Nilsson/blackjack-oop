@@ -1,75 +1,68 @@
-<?php
+<?php require 'game.php'; ?>
+<!doctype html>
 
-declare(strict_types=1);
+<html lang="en">
 
-ini_set('display_errors', "1");
-ini_set('display_startup_errors', "1");
-error_reporting(E_ALL);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
+          rel="stylesheet"/>
+    <title>Blackjack Game</title>
+</head>
+<body>
 
+<form method="post">
+    <input type="hidden" name="surrender">
+    <button type="submit" class="btn btn-danger">Surrender</button>
+</form>
 
-echo('hello');
+<form method="post">
+    <input type="hidden" name="stand">
+    <button type="submit" class="btn btn-danger">Stand</button>
+</form>
 
+<form method="post">
+    <input type="hidden" name="hit">
+    <button type="submit" class="btn btn-danger">Hit</button>
+</form>
 
-class blackJackPlayer
-{
-    // property declaration
+<form method="post">
+    <input type="hidden" name="refresh">
+    <button type="submit" class="btn btn-danger">Refresh</button>
+</form>
 
-
-    public $score;
-    // declare totalValue variable and set startValue at 0
-    public $totalValue = 0;
-    // Array for card collection values
-    public $arrayCollection = [11, 22];
-
-    public $scoreProperties = [
-        'maxScore' => 21,
-    ];
-    public $cardProperties = [
-        'minValue' => 1,
-        'maxValue' => 11,
-    ];
-
-
-    // method declaration:
-
-    // function to insert the card into an array
-    public function hit($arrayName, $cardValue)
-    {
-        array_push($arrayName, $cardValue);
+<footer>Nothing to find here.</footer>
+<style>
+    footer {
+        text-align: center;
     }
+</style>
+</body>
+<!--
+        <fieldset>
+            <legend>Products</legend>
+            <?php /*foreach ($products AS $i => $product): */?>
+                <label>
+                    <input type="checkbox" value="1" name="products[<?php /*echo $i */?>]"/> <?php /*echo $product['name'] */?> -
+                    &euro; <?php /*echo number_format($product['price'], 2) */?></label><br />
+            <?php /*endforeach; */?>
+        </fieldset>
+        <fieldset>
+            <legend>Order type</legend>
+            <?php /*foreach ($orderTypes AS $i => $orderType): */?>
+                <label>
+                    <input type="checkbox" value="1" name="orderTypes[<?php /*echo $i */?>]"/> <?php /*echo $orderType['name'] */?> -
+                    &euro; <?php /*echo number_format($orderType['price'], 2) */?></label><br />
+            <?php /*endforeach; */?>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Order!</button>
+        <?php
+/*        // whatIsHappening();
 
-    // function to calculate the sum of the complete array
-    public function calcSum($arrayWithValues)
-    {
-        return array_sum($arrayWithValues);
-    }
+        */?>
 
-    // function to insert the sum into the variable totalValue
-    public function changeValue()
-    {
-        $this->totalValue = $this->calcSum($this->arrayCollection);
-    }
-
-    // generateNumbersBetweenValueMinAndValueMax
-    public function randomNumber($min, $max)
-    {
-        return rand($min, $max);
-    }
-
-    public function varHit(){
-        $this->hit($this->arrayCollection,$this->randomNumber($this->cardProperties['minValue'], $this->cardProperties['maxValue']));
-}
-    public function stand(){
-    // end turn code
-}
-
-}
-
-$user = new blackJackPlayer;
-$dealer = new blackJackPlayer;
-
-$user->varHit();
-$user->changeValue();
-$user->totalValue;
-$user->scoreProperties;
-?>
+    </form>-->
+</html>
