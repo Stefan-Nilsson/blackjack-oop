@@ -15,45 +15,61 @@ class blackJackPlayer
     // property declaration
 
 
-    public $surrender;
+    public $score;
+    // declare totalValue variable and set startValue at 0
     public $totalValue = 0;
     // Array for card collection values
-    public $arrayCollection = [11,22];
+    public $arrayCollection = [11, 22];
 
     public $scoreProperties = [
         'maxScore' => 21,
     ];
-    public $cardProperties= [
-        'minSingleCardValue' => 1,
-        'maxSingleCardValue' => 11,
+    public $cardProperties = [
+        'minValue' => 1,
+        'maxValue' => 11,
     ];
 
 
-    // method declaration
-    public function hit($card, $arrayName) {
-        array_push($card, $arrayName);
+    // method declaration:
+
+    // function to insert the card into an array
+    public function hit($arrayName, $cardValue)
+    {
+        array_push($arrayName, $cardValue);
     }
+
     // function to calculate the sum of the complete array
-    public function calcSum($arrayWithValues){
+    public function calcSum($arrayWithValues)
+    {
         return array_sum($arrayWithValues);
     }
-    public function changeValue(){
-        $this->totalValue=$this->calcSum($this->arrayCollection);
+
+    // function to insert the sum into the variable totalValue
+    public function changeValue()
+    {
+        $this->totalValue = $this->calcSum($this->arrayCollection);
     }
-// generateNumbersBetweenValueMinAndValueMax
+
+    // generateNumbersBetweenValueMinAndValueMax
     public function randomNumber($min, $max)
     {
         return rand($min, $max);
     }
-$this->
-    public $varHit = ($this ->randomNumber($this->cardProperties['minSingleCardValue'], $this->cardProperties['maxSingleCardValue']), $this->arrayCollection);
+
+    public function varHit(){
+        $this->hit($this->arrayCollection,$this->randomNumber($this->cardProperties['minValue'], $this->cardProperties['maxValue']));
+}
+    public function stand(){
+    // end turn code
+}
+
 }
 
 $user = new blackJackPlayer;
 $dealer = new blackJackPlayer;
 
-$user ->varHit;
+$user->varHit();
+$user->changeValue();
 $user->totalValue;
-//$user ->calcSum($user->arrayCollection);
-//require 'game.php';
+$user->scoreProperties;
 ?>
