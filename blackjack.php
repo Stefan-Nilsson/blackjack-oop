@@ -25,8 +25,15 @@ class blackJackPlayer
     public $score;
     // declare totalValue variable and set startValue at 0
     public $totalValue = 0;
+
     // Array for card collection values (the cards the player will have)
     public $hand = [];
+    function __construct()
+    {
+        array_push($this->hand, rand(1,11), rand(1,11));
+    }
+
+
     // Player's score
     public $scoreProperties = [
         'maxScore' => 21,
@@ -39,22 +46,28 @@ class blackJackPlayer
     public $vocabulary = [
         'surrender'     => 'You have given up',
         'win'           => 'You have won the round',
-        'newCard'       => 'The dealer hands you a card with value: ',
-        'startSession'  => 'You have started the game',
+        'newCard'       => 'You have: ',
+        'startSession'  => 'You have started the game, your cards are: ',
         'lose'          => 'You have lost the round',
         'stand'         => 'You let the dealer play',
+        'total'         => 'and your total value is: ',
     ];
 
 
     // method declaration:
-
+    /*public function practicalRandom(){
+        return $this->randomNumber($this->cardProperties['minValue'], $this->cardProperties['maxValue']);
+    }*/
     // function to talk
     public function talk($words)
     {
         echo($words);
     }
 
-
+    //function to start the game
+    public function startGame(){
+        $this->talk($this->vocabulary['startSession'] . implode(", ",$this->hand) . " " . $this->vocabulary['total'] . $this->calcSum($this->hand));
+    }
     // function to insert the card into an array
     public function hit($cardValue)
     {
@@ -62,10 +75,10 @@ class blackJackPlayer
     }
 
     // function to calculate the sum of the complete array
-  //  public function calcSum($hand)
-  //  {
-   //     return array_sum($hand);
-   // }
+  public function calcSum($hand)
+  {
+        return array_sum($hand);
+   }
 
     // function to insert the sum into the variable totalValue
    // public function showTotalCardValue()
@@ -81,7 +94,7 @@ class blackJackPlayer
 
     public function giveNewCard(){
         $this->hit($this->randomNumber($this->cardProperties['minValue'], $this->cardProperties['maxValue']));
-        echo($this->vocabulary['newCard'] . $this->hand[0]);
+        echo($this->vocabulary['newCard'] . implode(" ",$this->hand));
     }
     public function stand($user){
         // ends turn, starts dealers round, probably with an interval or something

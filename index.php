@@ -21,6 +21,14 @@
     <!-- insert commment/pop up: You lost the round-->
 </form>
 
+
+
+<form method="post">
+    <input type="hidden" name="startGame">
+    <button type="submit" class="btn btn-danger">Start</button>
+</form>
+
+
 <form method="post">
     <input type="hidden" name="stand">
     <button type="submit" class="btn btn-danger">Stand</button>

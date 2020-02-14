@@ -8,8 +8,9 @@ require 'blackjack.php';
 
 echo('hello <br>');
 
-$user = new blackJackPlayer;
+$user = new blackJackPlayer();
 $dealer = new blackJackPlayer;
+$_SESSION['user']=$user;
 
 //$user->giveNewCard();
 // $user->showTotalCardValue();
@@ -17,9 +18,15 @@ $dealer = new blackJackPlayer;
 // $user->scoreProperties;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['hit'])) {
-        echo($user->giveNewCard());
+        $user->giveNewCard();
+    }
+    if (isset($_POST['startGame'])) {
+
+        $user->startGame();
+        array_combine($_SESSION['user']->hand, $user->hand);
     }
 }
+var_dump($_SESSION['user']->hand);
 /*
 if (isset($_POST['hit'])){
     echo($user->giveNewCard());
