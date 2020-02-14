@@ -17,6 +17,8 @@
 <form method="post">
     <input type="hidden" name="surrender">
     <button type="submit" class="btn btn-danger">Surrender</button>
+    <div name="surrenderText" class="form-control alert alert-danger"><?php echo ('')?></div>
+    <!-- insert commment/pop up: You lost the round-->
 </form>
 
 <form method="post">
@@ -25,7 +27,7 @@
 </form>
 
 <form method="post">
-    <input type="hidden" name="hit">
+    <input type="hidden" name="hit" value="1">
     <button type="submit" class="btn btn-danger">Hit</button>
 </form>
 

@@ -26,7 +26,7 @@ class blackJackPlayer
     // declare totalValue variable and set startValue at 0
     public $totalValue = 0;
     // Array for card collection values (the cards the player will have)
-    public $arrayCollection = [11, 22];
+    public $hand = [];
     // Player's score
     public $scoreProperties = [
         'maxScore' => 21,
@@ -36,25 +36,42 @@ class blackJackPlayer
         'maxValue' => 11,
     ];
 
+    public $vocabulary = [
+        'surrender'     => 'You have given up',
+        'win'           => 'You have won the round',
+        'newCard'       => 'The dealer hands you a card with value: ',
+        'startSession'  => 'You have started the game',
+        'lose'          => 'You have lost the round',
+        'stand'         => 'You let the dealer play',
+    ];
+
+
     // method declaration:
 
-    // function to insert the card into an array
-    public function hit($arrayName, $cardValue)
+    // function to talk
+    public function talk($words)
     {
-        array_push($arrayName, $cardValue);
+        echo($words);
+    }
+
+
+    // function to insert the card into an array
+    public function hit($cardValue)
+    {
+        array_push($this->hand, $cardValue);
     }
 
     // function to calculate the sum of the complete array
-    public function calcSum($arrayWithValues)
-    {
-        return array_sum($arrayWithValues);
-    }
+  //  public function calcSum($hand)
+  //  {
+   //     return array_sum($hand);
+   // }
 
     // function to insert the sum into the variable totalValue
-    public function changeValue()
-    {
-        $this->totalValue = $this->calcSum($this->arrayCollection);
-    }
+   // public function showTotalCardValue()
+    //{
+    //    $this->totalValue = $this->calcSum($this->hand);
+    //}
 
     // generateNumbersBetweenValueMinAndValueMax
     public function randomNumber($min, $max)
@@ -62,11 +79,12 @@ class blackJackPlayer
         return rand($min, $max);
     }
 
-    public function varHit(){
-        $this->hit($this->arrayCollection,$this->randomNumber($this->cardProperties['minValue'], $this->cardProperties['maxValue']));
+    public function giveNewCard(){
+        $this->hit($this->randomNumber($this->cardProperties['minValue'], $this->cardProperties['maxValue']));
+        echo($this->vocabulary['newCard'] . $this->hand[0]);
     }
-    public function stand(){
-        // end turn code
+    public function stand($user){
+        // ends turn, starts dealers round, probably with an interval or something
     }
 }
 
@@ -95,10 +113,6 @@ if (isset($_POST['refresh'])) {
 // refresh page
     header('refresh');
 }
-
-
-
-
 
 //nice to have's:
 /*

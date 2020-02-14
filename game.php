@@ -6,20 +6,26 @@ error_reporting(E_ALL);
 session_start();
 require 'blackjack.php';
 
-echo('hello');
+echo('hello <br>');
 
 $user = new blackJackPlayer;
 $dealer = new blackJackPlayer;
 
-$user->varHit();
-$user->changeValue();
-$user->totalValue;
-$user->scoreProperties;
+//$user->giveNewCard();
+// $user->showTotalCardValue();
+//$user->totalValue;
+// $user->scoreProperties;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['hit'])) {
+        echo($user->giveNewCard());
+    }
+}
+/*
+if (isset($_POST['hit'])){
+    echo($user->giveNewCard());
+}*/
 
 whatIsHappening();
-
-
-// refresh button
 
 
 
